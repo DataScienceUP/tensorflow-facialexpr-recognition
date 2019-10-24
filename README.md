@@ -9,6 +9,6 @@ All code is commented by line and consist in several parts, you have to follow t
 - Train with landmarks or without them, download the lardmark model from `shape_predictor_68_face_landmarks.dat`
 
 
-# Description
+## Description
 
 Pipeline uses tf.dataset API to load TFRecords, tensorboard and additional information that is fed to the architecture in the form of landmarks
