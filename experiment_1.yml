@@ -1,0 +1,31 @@
+TRAIN:
+  MODE: 'TRAIN'
+  NAME: '20190724_training_8classes_fexnet_adam_10kdlo_newloader'
+  CHECKPOINT_DIR: '.../20190924_relabeled_fer/'
+  LEARNING_RATE: 0.0005
+  MAX_STEP: 45000
+  IS_PRETRAIN: True
+  OPTIMIZER: 'Adam'
+  WEIGHT_DECAY:
+  PRETRAIN:
+
+TEST:
+  MODE: 'TEST'
+  MODEL_PATH: '.../20190924_relabeled_fer'
+  IMAGE_SIZE:
+    WIDTH: 48
+    HEIGHT: 48
+    DEPTH: 1
+  N_CLASSES: 8
+
+DATA:
+  N_CLASSES: 8
+  BATCH_SIZE: 64
+  IMAGE_SIZE:
+    WIDTH: 48
+    HEIGHT: 48
+    DEPTH: 1
+  DATA_DIR: '.../training'
+  EVAL_DIR: '.../fer2013/20190924_relabeled_fer'
+  IS_SHUFFLE: True
+  NORMALIZE: False
