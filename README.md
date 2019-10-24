@@ -6,8 +6,9 @@ All code is commented by line and consist in several parts, you have to follow t
 - It needs the first original data from the competition https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 - You have to follow the relabeling from microsoft FER2013 plus, https://github.com/microsoft/FERPlus, reanotations script is the same as microsofts!.
 - Parse and preprocess the data in such a way that you have a list of dictionaries.
-- Train with landmarks or without them, download the lardmark model from `shape_predictor_68_face_landmarks.dat`
+- Train with landmarks or without them, download the lardmark model from `shape_predictor_68_face_landmarks.dat` (`train_landmarks.py`contains the training loop to include the landmarks)
 
+NOTE: There are several improvements that might be implemented in short term, such as GPU support, TF2.0, find robust architecture
 
 ## Description
 
