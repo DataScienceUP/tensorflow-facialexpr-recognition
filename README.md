@@ -7,3 +7,8 @@ All code is commented by line and consist in several parts, you have to follow t
 - You have to follow the relabeling from microsoft FER2013 plus, https://github.com/microsoft/FERPlus, reanotations script is the same as microsofts!.
 - Parse and preprocess the data in such a way that you have a list of dictionaries.
 - Train with landmarks or without them, download the lardmark model from `shape_predictor_68_face_landmarks.dat`
+
+
+# Description
+
+Pipeline uses tf.dataset API to load TFRecords, tensorboard and additional information that is fed to the architecture in the form of landmarks
