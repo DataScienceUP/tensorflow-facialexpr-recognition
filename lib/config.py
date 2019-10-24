@@ -1,0 +1,86 @@
+# this is a custom config based on a superclass it allows you to write in a YML file your hyper parameter settings
+# also the data and directories for your checkpoints, you can customize (ex. it to train with or without GPU, use xx
+# training strategy, load other pretrain models and stuff like that), this was based on the cofiguration code of
+# https://github.com/walsvid
+
+import yaml
+
+
+class Config(object):
+    def __init__(self, cfg_):
+        """
+        :type cfg_: dict
+        :param cfg_:
+        """
+        self.config = cfg_
+
+
+class TrainNetConfig(Config):
+    def __init__(self, cfg_):
+        """
+        :type cfg_: dict
+        :param cfg_:
+        """
+        super().__init__(cfg_)
+        self.mode = self.config['MODE']
+        self.name = self.config['NAME']
+        self.checkpoint_dir = self.config['CHECKPOINT_DIR']
+        self.max_to_keep = self.config['MAX_TO_KEEP']
+        self.n_classes = self.config['N_CLASSES']
+        self.learning_rate = self.config['LEARNING_RATE']
+        self.max_step = self.config['MAX_STEP']
+        self.is_pretrain = self.config['IS_PRETRAIN']
+        self.batch_size = self.config['BATCH_SIZE']
+        self.image_width = self.config['IMAGE_SIZE']['WIDTH']
+        self.image_height = self.config['IMAGE_SIZE']['HEIGHT']
+        self.image_depth = self.config['IMAGE_SIZE']['DEPTH']
+        self.pre_train_weight = self.config['PRE_TRAIN_WEIGHT']
+        self.type_optimizer = self.config['OPTIMIZER']
+        self.weight_decay = self.config['WEIGHT_DECAY']
+
+
+class TestNetConfig(Config):
+    def __init__(self, cfg_):
+        super().__init__(cfg_)
+        self.mode = self.config['MODE']
+        self.model_path = self.config['MODEL_PATH']
+        self.image_width = self.config['IMAGE_SIZE']['WIDTH']
+        self.image_height = self.config['IMAGE_SIZE']['HEIGHT']
+        self.image_depth = self.config['IMAGE_SIZE']['DEPTH']
+        self.batch_size = self.config['BATCH_SIZE']
+        self.n_classes = self.config['N_CLASSES']
+
+
+class DataConfig(Config):
+    def __init__(self, cfg_):
+        super().__init__(cfg_)
+        self.image_width = self.config['IMAGE_SIZE']['WIDTH']
+        self.image_height = self.config['IMAGE_SIZE']['HEIGHT']
+        self.image_depth = self.config['IMAGE_SIZE']['DEPTH']
+        self.data_dir = self.config['DATA_DIR']
+        self.eval_dir = self.config['EVAL_DIR']
+        self.batch_size = self.config['BATCH_SIZE']
+        self.n_classes = self.config['N_CLASSES']
+        self.normalize = self.config['NORMALIZE']
+
+
+class ConfigReader(object):
+    def __init__(self, yaml_file_):
+        with open(yaml_file_) as yf:
+            self.total_config = yaml.load(yf)
+
+    def get_train_config(self):
+        try:
+            return {**self.total_config['TRAIN'], **self.total_config['DATA']}
+        except KeyError:
+            return None
+
+    def get_test_config(self):
+        try:
+            return {**self.total_config['TEST'], **self.total_config['DATA']}
+        except KeyError:
+            return None
+
+
+if __name__ == '__main__':
+    pass
