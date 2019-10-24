@@ -14,16 +14,7 @@ class Net:
         self.config = cfg_
         self.is_training = True if self.config.mode == 'TRAIN' else False
         self.saver = None
-        # init the global step
-        self.init_global_step()
-        # init the epoch counter
-        self.init_cur_epoch()
         self.scope = {}
-
-    def save(self, sess):
-        print("Saving model...")
-        self.saver.save(sess, self.config.checkpoint_dir, self.global_step_tensor)
-        print("Model saved")
 
     def load(self, sess, saver, ckpt_path):
         print('Model checkpoint path: {}'.format(ckpt_path))
@@ -34,12 +25,3 @@ class Net:
             print('Done')
         except FileNotFoundError:
             raise 'Check your pretrained {:s}'.format(ckpt_path)
-
-    def init_cur_epoch(self):
-        with tf.variable_scope('cur_epoch'):
-            self.cur_epoch_tensor = tf.Variable(0, trainable=False, name='cur_epoch')
-            self.increment_cur_epoch_tensor = tf.assign(self.cur_epoch_tensor, self.cur_epoch_tensor + 1)
-
-    def init_global_step(self):
-        with tf.variable_scope('global_step'):
-            self.global_step_tensor = tf.Variable(0, trainable=False, name='global_step')
