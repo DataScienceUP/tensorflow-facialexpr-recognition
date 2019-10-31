@@ -14,7 +14,6 @@ NOTE: There are several improvements that might be implemented in short term, su
 
 Pipeline uses tf.dataset API to load TFRecords, tensorboard and additional information that is fed to the architecture in the form of landmarks
 
-![landmarks](https://github.com/miguelalba96/tensorflow-facialexpr-recognition/blob/master/imgs/landmarks_architecture.png) <!-- .element height="25%" width="25%" -->
+<img src="https://github.com/miguelalba96/tensorflow-facialexpr-recognition/blob/master/imgs/landmarks_architecture.png" alt="architecture" width="500">
 
-![session](https://github.com/miguelalba96/tensorflow-facialexpr-recognition/blob/master/imgs/landmarks_session.png) <!-- .element height="25%" width="25%" -->
-
+<img src="https://github.com/miguelalba96/tensorflow-facialexpr-recognition/blob/master/imgs/landmarks_session.png" alt="Training Session" width="500">
